@@ -1,1 +1,1 @@
-alert('hacked!');
+alert(document.cookie);
