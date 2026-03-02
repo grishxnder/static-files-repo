@@ -1,3 +1,3 @@
-# test payloads
+// test payloads
 alert('hacked!');
 console.log('hacked')
