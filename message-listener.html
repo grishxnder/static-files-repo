@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Приемник postMessage</title>
+</head>
+<body>
+    <h1>Лог сообщений:</h1>
+    <div id="log" style="border:1px solid black; padding:10px; min-height:200px;"></div>
+
+    <script>
+        // Вешаем слушатель на ВСЕ входящие сообщения
+        window.addEventListener('message', (event) => {
+            const logDiv = document.getElementById('log');
+            
+            // Создаем строчку с инфо о сообщении
+            const messageInfo = document.createElement('p');
+            messageInfo.innerHTML = `
+                <b>Откуда (origin):</b> ${event.origin}<br>
+                <b>Данные:</b> ${JSON.stringify(event.data)}<br>
+                <b>Время:</b> ${new Date().toLocaleTimeString()}
+                <hr>
+            `;
+            
+            logDiv.appendChild(messageInfo);
+            
+            // Также дублируем в консоль для удобства
+            console.log('Получено на страницу-приемник:', event.data);
+        });
+
+        console.log('Слушатель postMessage активирован. Ждем сообщения...');
+    </script>
+</body>
+</html>
